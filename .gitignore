@@ -1,0 +1,12 @@
+
+obj/Debug/\.DS_Store
+
+bin/Debug/netcoreapp2\.0/ito_fc_agent\.deps\.json
+
+bin/Debug/netcoreapp2\.0/ito_fc_agent\.dll
+
+bin/Debug/netcoreapp2\.0/ito_fc_agent\.pdb
+
+bin/Debug/netcoreapp2\.0/ito_fc_agent\.runtimeconfig\.dev\.json
+
+bin/Debug/netcoreapp2\.0/ito_fc_agent\.runtimeconfig\.json
