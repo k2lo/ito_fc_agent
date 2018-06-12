@@ -10,3 +10,7 @@ bin/Debug/netcoreapp2\.0/ito_fc_agent\.pdb
 bin/Debug/netcoreapp2\.0/ito_fc_agent\.runtimeconfig\.dev\.json
 
 bin/Debug/netcoreapp2\.0/ito_fc_agent\.runtimeconfig\.json
+
+obj/Debug/netcoreapp2\.0/ito_fc_agent\.dll
+
+obj/Debug/netcoreapp2\.0/ito_fc_agent\.pdb
