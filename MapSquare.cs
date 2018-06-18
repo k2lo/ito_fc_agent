@@ -9,16 +9,16 @@ namespace FcAgent
     class MapSquare
     {
         //percepts
-        private bool stench, breeze, glitter, scream;
+        private bool obstacle;
         //facts
-        private bool visited, safe, pit, wumpus;
+        private bool clear, door, visited;
         Agent CurrentAgent = null;
 
-        public bool Stench
+        public bool Obstacle
         {
             get
             {
-                return stench;
+                return obstacle;
             }
 
             set
@@ -27,44 +27,6 @@ namespace FcAgent
             }
         }
 
-        public bool Breeze
-        {
-            get
-            {
-                return breeze;
-            }
-
-            set
-            {
-                breeze = value;
-            }
-        }
-
-        public bool Glitter
-        {
-            get
-            {
-                return glitter;
-            }
-
-            set
-            {
-                glitter = value;
-            }
-        }
-
-        public bool Scream
-        {
-            get
-            {
-                return scream;
-            }
-
-            set
-            {
-                scream = value;
-            }
-        }
 
         public bool Visited
         {
@@ -78,51 +40,38 @@ namespace FcAgent
                 visited = value;
             }
         }
-
-        public bool Safe
+        public bool Clear
         {
             get
             {
-                return safe;
+                return clear;
             }
 
             set
             {
-                safe = value;
+                clear = value;
             }
         }
 
-        public bool Pit
+        public bool Door
         {
             get
             {
-                return pit;
+                return door;
             }
 
             set
             {
-                pit = value;
+                door = value;
             }
         }
 
-        public bool Wumpus
-        {
-            get
-            {
-                return wumpus;
-            }
-
-            set
-            {
-                wumpus = value;
-            }
-        }
 
 		internal Agent CurrentAgent1 { get => CurrentAgent; set => CurrentAgent = value; }
 
 		public MapSquare()
         {
-            stench = breeze = glitter = scream = visited = safe = pit = wumpus = false;
+            obstacle = clear = door = visited = false;
         }
 
        
@@ -132,23 +81,15 @@ namespace FcAgent
             String s = "";
             if (CurrentAgent != null)
                 s += "A";
-            if (stench)
-                s+="St";
-            if (breeze)
-                s += "Br";
-            if (glitter)
-                s += "Gl";
-            if (scream)
-                s += "Sc";
             if (visited)
                 s += "V";
-            if (safe)
-                s += "Sa";
-            if (pit)
-                s += "P";
-            if (wumpus)
-                s += "W";
-            if (!stench && !breeze && !glitter && !scream && !visited && !safe && !pit && !wumpus )
+            if (obstacle)
+                s+="Obs";
+            if (clear)
+                s += "Cl";
+            if (door)
+                s += "Dr";
+            if (!obstacle && !clear && !door)
                 s += "-";
             while (s.Length < 10)
             {
