@@ -1,0 +1,3 @@
+/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Release/netcoreapp2.0/ito_fc_agent.csproj.CoreCompileInputs.cache
+/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Release/netcoreapp2.0/ito_fc_agent.AssemblyInfoInputs.cache
+/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Release/netcoreapp2.0/ito_fc_agent.AssemblyInfo.cs

@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace ito_fc_agent
+namespace FcAgent
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Application.Run(new Form1());
         }
     }
 }

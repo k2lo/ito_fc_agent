@@ -1,0 +1,7 @@
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/bin/Debug/aima-csharp.exe.config
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/bin/Debug/aima-csharp.exe
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/bin/Debug/aima-csharp.pdb
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/obj/Debug/aima-csharp.csprojResolveAssemblyReference.cache
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/obj/Debug/aima-csharp.csproj.CoreCompileInputs.cache
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/obj/Debug/aima-csharp.exe
+/Users/karol/Documents/priv/c#/aima-csharp-master/aima-csharp/obj/Debug/aima-csharp.pdb
