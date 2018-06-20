@@ -11,7 +11,7 @@ namespace FcAgent
 		private int numofobstacles;
 		Random r = new Random();
 
-		public Corridor(int size_x, int size_y, int door, int obstacles)
+		public Corridor(int size_x, int size_y, int obstacles)
 		{
 			size = new ito_fc_agent.util.Size(size_x, size_y);
 			map = new MapSquare[size_x, size_y];
@@ -25,7 +25,7 @@ namespace FcAgent
 			}
 		}
 
-		public Corridor(ito_fc_agent.util.Size size, int door, int obstacles) : this(size.X, size.Y, door, obstacles)
+		public Corridor(ito_fc_agent.util.Size size, int obstacles) : this(size.X, size.Y, obstacles)
 		{
 
 		}
@@ -74,7 +74,7 @@ namespace FcAgent
 			x = r.Next(0, size.X);
 
 
-			while (map[x, size.Y].Obstacle)
+			while (map[x, size.Y-1].Obstacle)
 			{
 				x = r.Next(0, size.X);
 			}

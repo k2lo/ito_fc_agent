@@ -6,7 +6,8 @@ namespace FcAgent
     {
         static void Main()
         {
-            // Application.Run(new Form1());
+			Initialize initialize = new Initialize();
+			initialize.Run();
         }
     }
 }
