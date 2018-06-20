@@ -6,7 +6,6 @@ namespace FcAgent
 {
 	public class CorridorPlacements
 	{
-		private int size = 0;
 		private Point door;
 		private List<Point> obstacles = new List<Point>();
 		public CorridorPlacements(List<Point> o, Point d)

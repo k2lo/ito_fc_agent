@@ -23,12 +23,12 @@ namespace FcAgent
 
             set
             {
-                stench = value;
+                obstacle = value;
             }
         }
+        
 
-
-        public bool Visited
+		public bool Visited
         {
             get
             {

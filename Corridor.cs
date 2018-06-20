@@ -4,30 +4,44 @@ using System.Drawing;
 namespace FcAgent
 {
 	class Corridor
-    {
+	{
 
-        public MapSquare[,] map ;
-		private int size_x;
-		private int size_y;
-		private int numofobstacles;		
+		public MapSquare[,] map;
+		private ito_fc_agent.util.Size size;
+		private int numofobstacles;
 		Random r = new Random();
 
-		public Corridor(int size_x, int size_y, int door, int obstacles) {
-			size = siZe;
-            map = new MapSquare[size_x, size_y];
+		public Corridor(int size_x, int size_y, int door, int obstacles)
+		{
+			size = new ito_fc_agent.util.Size(size_x, size_y);
+			map = new MapSquare[size_x, size_y];
 			numofobstacles = obstacles;
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    map[i, j] = new MapSquare();
-                }
-               
-            }
-            
-        }
-		
-		public int Size { get => size_x; get => size_y; set => size_x, set => size_y = value; }
+			for (int i = 0; i < size.X; i++)
+			{
+				for (int j = 0; j < size.Y; j++)
+				{
+					map[i, j] = new MapSquare();
+				}
+			}
+		}
+
+		public Corridor(ito_fc_agent.util.Size size, int door, int obstacles) : this(size.X, size.Y, door, obstacles)
+		{
+
+		}
+
+
+		public ito_fc_agent.util.Size Size
+		{
+			get
+			{
+				return size;
+			}
+			set
+			{
+				size = value;
+			}
+		}
 
 		public void InitializeSpecificWorld(CorridorPlacements p)
 		{
@@ -39,57 +53,59 @@ namespace FcAgent
 
 		}
 		public void InitializeRandomWorld()
-        {
+		{
 
-            
-            int x=0,y=0;
+
+			int x = 0, y = 0;
 
 			for (int m = 0; m < numofobstacles; m++)
 			{
-				x = r.Next(1, size);
-				y = r.Next(1, size);
+				x = r.Next(1, size.X);
+				y = r.Next(1, size.Y);
 				while (x == 0 && y == 0)
 				{
-					x = r.Next(1, size);
-					y = r.Next(1, size);
+					x = r.Next(1, size.X);
+					y = r.Next(1, size.Y);
 				}
 				Placeobstacles(x, y);
 			}
-            
-            //Adding Gold
-            x = r.Next(0, size);
-            y = r.Next(0, size);
-            while (map[x, y].Obstacle || (x == 0 && y == 0))
-            {
-                x = r.Next(0, size);
-                y = r.Next(0, size);
-            }
-            map[x, y].Door = true;
-           
-            
 
-        }
-		private void Placeobstacles(int x,int y)
+			//Adding Gold
+			x = r.Next(0, size.X);
+
+
+			while (map[x, size.Y].Obstacle)
+			{
+				x = r.Next(0, size.X);
+			}
+			map[x, size.Y].Door = true;
+
+
+
+		}
+		private void Placeobstacles(int x, int y)
 		{
 			map[x, y].Obstacle = true;
 		}
-		
-		public void PrintMap() {
+
+		public void PrintMap()
+		{
 			Console.WriteLine();
 			Console.WriteLine("______________________________________________");
 			Console.WriteLine("   0         1         2         3");
-            for (int i = 0; i < size; i++) {
-                Console.Write(i+"  ");
-                for (int j = 0; j < size; j++)
-                {
-                    Console.Write(map[j,i].ReturnSquare());
-                    
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("(Obs=Obstacle, Dr=Door, V=Visited, A=Agent)");
-        }
+			for (int i = 0; i < size.X; i++)
+			{
+				Console.Write(i + "  ");
+				for (int j = 0; j < size.Y; j++)
+				{
+					Console.Write(map[j, i].ReturnSquare());
 
-        
-    }
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine("(Obs=Obstacle, Dr=Door, V=Visited, A=Agent)");
+		}
+
+
+	}
 }
