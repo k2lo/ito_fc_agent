@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace FcAgent
 {
-	class Corridor
+	public class Corridor
 	{
 
 		public MapSquare[,] map;
@@ -70,7 +70,7 @@ namespace FcAgent
 				Placeobstacles(x, y);
 			}
 
-			//Adding Gold
+			//Adding Door
 			x = r.Next(0, size.X);
 
 
@@ -78,7 +78,7 @@ namespace FcAgent
 			{
 				x = r.Next(0, size.X);
 			}
-			map[x, size.Y].Door = true;
+			map[x, size.Y-1].Door = true;
 
 
 
@@ -93,10 +93,10 @@ namespace FcAgent
 			Console.WriteLine();
 			Console.WriteLine("______________________________________________");
 			Console.WriteLine("   0         1         2         3");
-			for (int i = 0; i < size.X; i++)
+			for (int i = 0; i < (size.Y); i++)
 			{
 				Console.Write(i + "  ");
-				for (int j = 0; j < size.Y; j++)
+				for (int j = 0; j < (size.X); j++)
 				{
 					Console.Write(map[j, i].ReturnSquare());
 

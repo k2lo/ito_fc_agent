@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FcAgent
 {
-    class MapSquare
+    public class MapSquare
     {
         //percepts
         private bool obstacle;

@@ -3,7 +3,6 @@
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.runtimeconfig.dev.json
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.dll
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.pdb
-/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csprojResolveAssemblyReference.cache
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csproj.CoreCompileInputs.cache
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.AssemblyInfoInputs.cache
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.AssemblyInfo.cs

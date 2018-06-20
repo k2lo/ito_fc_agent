@@ -7,7 +7,12 @@ namespace FcAgent
         static void Main()
         {
 			Initialize initialize = new Initialize();
-			initialize.Run();
+			initialize.Init();
+			initialize.corridor.PrintMap();
+			initialize.agent.Step();
+			initialize.corridor.PrintMap();
+			initialize.agent.Step();
+			initialize.corridor.PrintMap();
         }
     }
 }

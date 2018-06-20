@@ -8,7 +8,7 @@ using aima.core.logic.fol.domain;
 enum Direction { East, South, North, West };
 namespace FcAgent
 {
-	class Agent
+	public class Agent
 	{
 		private string Textb = "";
 		private List<Point> visited = new List<Point>();
@@ -30,6 +30,8 @@ namespace FcAgent
 			map = c.map;
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
+
+
 			FOLDomain fOLDomain = new FOLDomain();
 			kb = new FOLKnowledgeBase(fOLDomain);
 
@@ -168,7 +170,7 @@ namespace FcAgent
 		private string CreateSentence(bool obstacle, bool door, int x, int y)
 		{
 			//TODO
-			return "";
+			return "Ahead is " + (y + 1) + " , (nopit([A1, " + y + "]); assert(ispit([A1," + y + "])))";
 		}
 
 		//This function makes the agent take a step in the corridor
