@@ -47,6 +47,7 @@ namespace aima.core.logic.fol.domain
 	    domain.addConstant("America");
 	    domain.addConstant("M1");
 	    domain.addConstant("Nono");
+
 	    domain.addPredicate("American");
 	    domain.addPredicate("Weapon");
 	    domain.addPredicate("Sells");
@@ -103,5 +104,24 @@ namespace aima.core.logic.fol.domain
 
 	    return domain;
 	}
+
+    public static FOLDomain projectDomain()
+    {
+        FOLDomain domain = new FOLDomain();
+        domain.addPredicate("Parent");
+        domain.addPredicate("Caught");
+        domain.addPredicate("Friend");
+        domain.addPredicate("Skis");
+        domain.addConstant("Mike");
+        domain.addConstant("Joe");
+        domain.addConstant("Janet");
+        domain.addConstant("Nancy");
+        domain.addConstant("Ernie");
+        domain.addConstant("Bert");
+        domain.addConstant("Red");
+        domain.addConstant("Drew");
+
+        return domain;
+    }
     }
 }

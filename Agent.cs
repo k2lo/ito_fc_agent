@@ -31,9 +31,22 @@ namespace FcAgent
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
 
+			//HashSet<string> constains = new HashSet<string>();
+			//constains.Add("door");
+			//constains.Add("obstacle");
+			//constains.Add("wall");
+			//constains.Add("agent");
 
-			FOLDomain fOLDomain = new FOLDomain();
-			kb = new FOLKnowledgeBase(fOLDomain);
+			//HashSet<string> predicates = new HashSet<string>();
+			//predicates.Add("<");
+			//predicates.Add(">");
+            
+
+			//HashSet<string> functions = new HashSet<string>();
+			//functions.Add("Action");
+			//functions.Add("AtDoor");
+                   
+			kb = new FOLKnowledgeBase(DomainFactory.weaponsDomain());
 
 		}
 		public int Actions
@@ -170,7 +183,8 @@ namespace FcAgent
 		private string CreateSentence(bool obstacle, bool door, int x, int y)
 		{
 			//TODO
-			return "Ahead is " + (y + 1) + " , (nopit([A1, " + y + "]); assert(ispit([A1," + y + "])))";
+			//return "Ahead is " + (y + 1) + " , (nopit([A1, " + y + "]); assert(ispit([A1," + y + "])))";
+			return "";
 		}
 
 		//This function makes the agent take a step in the corridor
@@ -181,8 +195,8 @@ namespace FcAgent
 			bool obs = map[CurrentX, CurrentY].Obstacle;
 			bool dr = map[CurrentX, CurrentY].Door;
 			//kb.tell(obs, dr, false, CurrentX, CurrentY);
-
-			kb.tell(CreateSentence(obs, dr, CurrentX, CurrentY));
+			kb.tell("( (((American(x) AND Weapon(y)) AND Sells(x,y,z)) AND Hostile(z)) => Criminal(x))");
+			//kb.tell("American(West)");
 			if (dr)
 			{
 				throw new Exception("The agent found the door and won");

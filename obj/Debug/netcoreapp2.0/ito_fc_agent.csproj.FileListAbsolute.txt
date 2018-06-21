@@ -8,3 +8,4 @@
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.AssemblyInfo.cs
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.dll
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.pdb
+/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csprojResolveAssemblyReference.cache
