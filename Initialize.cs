@@ -13,7 +13,7 @@ namespace FcAgent
        
 		public void Init(){
 
-			corridor = new Corridor(10, 15, 3);
+			corridor = new Corridor(10, 15, 50);
 			corridor.InitializeRandomWorld();
 
 			agent = new Agent(corridor);

@@ -65,6 +65,7 @@ namespace aima.core.logic.fol.domain
 	    FOLDomain domain = new FOLDomain();
 	    domain.addConstant("John");
 	    domain.addConstant("Richard");
+
 	    domain.addPredicate("King");
 	    domain.addPredicate("Greedy");
 	    domain.addPredicate("Evil");
@@ -108,18 +109,11 @@ namespace aima.core.logic.fol.domain
     public static FOLDomain projectDomain()
     {
         FOLDomain domain = new FOLDomain();
-        domain.addPredicate("Parent");
-        domain.addPredicate("Caught");
-        domain.addPredicate("Friend");
-        domain.addPredicate("Skis");
-        domain.addConstant("Mike");
-        domain.addConstant("Joe");
-        domain.addConstant("Janet");
-        domain.addConstant("Nancy");
-        domain.addConstant("Ernie");
-        domain.addConstant("Bert");
-        domain.addConstant("Red");
-        domain.addConstant("Drew");
+        domain.addPredicate("Ahead");
+
+        domain.addConstant("Door");
+        domain.addConstant("Obstacle");
+		domain.addConstant("Clear");
 
         return domain;
     }

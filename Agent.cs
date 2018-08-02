@@ -30,23 +30,8 @@ namespace FcAgent
 			map = c.map;
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
-
-			//HashSet<string> constains = new HashSet<string>();
-			//constains.Add("door");
-			//constains.Add("obstacle");
-			//constains.Add("wall");
-			//constains.Add("agent");
-
-			//HashSet<string> predicates = new HashSet<string>();
-			//predicates.Add("<");
-			//predicates.Add(">");
-            
-
-			//HashSet<string> functions = new HashSet<string>();
-			//functions.Add("Action");
-			//functions.Add("AtDoor");
-                   
-			kb = new FOLKnowledgeBase(DomainFactory.weaponsDomain());
+                                     
+			kb = new FOLKnowledgeBase(DomainFactory.projectDomain());
 
 		}
 		public int Actions
@@ -184,19 +169,40 @@ namespace FcAgent
 		{
 			//TODO
 			//return "Ahead is " + (y + 1) + " , (nopit([A1, " + y + "]); assert(ispit([A1," + y + "])))";
-			return "";
+            //
+			if (door)
+			{
+				Console.WriteLine("Ahead is Door");
+				return "Ahead(Door)";
+			}
+			if (obstacle)
+			{
+				Console.WriteLine("point ( " + x + "," + y + ") is obstacle");
+				return "Ahead(Obstacle)";
+			}
+			else
+			{
+				Console.WriteLine("Ahead is Clear ");
+				return "Ahead(Clear)";
+			}
+      
 		}
-
 		//This function makes the agent take a step in the corridor
 		public void Step()
 		{
-			Textb = "";
-			//Telling FOLKnowledgeBase agent's percept
+			Point point = new Point(CurrentX, CurrentY);
 			bool obs = map[CurrentX, CurrentY].Obstacle;
 			bool dr = map[CurrentX, CurrentY].Door;
-			//kb.tell(obs, dr, false, CurrentX, CurrentY);
-			kb.tell("( (((American(x) AND Weapon(y)) AND Sells(x,y,z)) AND Hostile(z)) => Criminal(x))");
-			//kb.tell("American(West)");
+
+			//kb.tell(CreateSentence(obs, dr, CurrentX, CurrentY)); nie tutaj
+            //wstawiamy tutaj zbudowane zdanie na podstawie zmiennych 
+
+			if (obs)
+            {
+                //tu powinno być odnotowywanie zderzenie z przeszkodą
+                throw new Exception("The agent hitted the obstacle");
+            }
+     
 			if (dr)
 			{
 				throw new Exception("The agent found the door and won");
@@ -206,35 +212,35 @@ namespace FcAgent
 
 			List<Point> obstaclenodes = new List<Point>();
 
-			////Asking FOLKnowledgeBase about safety of neighbouring cell's safety
+			//Asking FOLKnowledgeBase about safety of neighbouring cell's safety
 			//foreach (Point p in visited)
 			//{
-			//	//making neighbours for each visited node
-			//	List<Point> neighbours = Getpointneighbours(p);
-			//	foreach (Point n in neighbours)
-			//	{
-			//		if (kb.isobstacle(n.X, n.Y) && !visited.Contains(n))
-			//		{
-			//			obstaclenodes.Add(n);
-			//		}
-			//		if (!kb.isobstacle(n.X, n.Y))
-			//		{
-			//			//Console.WriteLine("point ( "+n.X+","+n.Y+") is "+kb.ispit(n.X, n.Y));
-			//			if (!clear.Contains(n))
-			//				clear.Add(n);
-			//		}
-			//		else
-			//		{
-			//			if (!notclear.Contains(n))
-			//				notclear.Add(n);
-			//		}
-			//	}
+				//making neighbours for each visited node
+			List<Point> neighbours = Getpointneighbours(point);
+				foreach (Point n in neighbours)
+				{   
+					bool obsn = map[n.X, n.Y].Obstacle;
+				    bool drn = map[n.X, n.Y].Door;
+				    kb.tell(CreateSentence(obsn, drn, CurrentX, CurrentY));
+				    
+					if (obsn)
+					{   
+					    //kb.tell()
+						//Console.WriteLine("point ( " + n.X + "," + n.Y + ") is obstacle");
+						//obstaclenodes.Add(n);
+					}
+					else
+					{
+						Console.WriteLine("point ( "+n.X+","+n.Y+") is clear");
+						if (!clear.Contains(n))
+							clear.Add(n);
+					}
+				}
 			//}
 
 
 			Console.WriteLine();
 			//if there are safe nodes go to safe one
-			//Console.WriteLine(safe.Count);
 			List<Point> newclear = new List<Point>();
 			foreach (Point s in clear)
 			{
@@ -244,24 +250,28 @@ namespace FcAgent
 
 				}
 			}
-			Textb += "Not Visited Safe Nodes:\n";
+			Console.WriteLine("Not Visited Safe Nodes:");
 			foreach (Point l in newclear)
 			{
-				Textb += l + ", \n";
+				Console.WriteLine(l);
 			}
-			Textb += "\n";
-			Textb += "These nodes are obstacles: \n";
+			Console.WriteLine("These nodes are obstacles:");
 			foreach (Point l in obstaclenodes)
 			{
-				Textb += l + ", \n";
+				Console.WriteLine(l);
 			}
-
-			Textb += "\n";
+           
 			//if there are safe new nodes to visit go to that node
 			if (newclear.Count != 0)
 			{
-				Point nextpoint = newclear.First();
-				Textb += "Moving to location " + nextpoint + "\n";
+
+				Point nextpoint = new Point(CurrentX, CurrentY + 1);
+				if (!newclear.Contains(nextpoint))
+				{
+					nextpoint = newclear.First();
+				}
+					
+				Console.WriteLine("Moving to location " + nextpoint + "\n");
 				startpoint = new Point(CurrentX, CurrentY);
 				MovetoLocation(nextpoint.X, nextpoint.Y);
 
@@ -270,7 +280,7 @@ namespace FcAgent
 			//if there are no new safe nodes to visit pick a random new node to go to
 			else
 			{
-				Textb += "No more safe nodes\n";
+				Console.WriteLine("No more safe nodes\n");
 
 
 				bool nomoremoves = true;
@@ -278,7 +288,7 @@ namespace FcAgent
 				{
 					if (!visited.Contains(m))
 					{
-						Textb += "Moving to random node " + m + "\n";
+						Console.WriteLine("Moving to random node " + m + "\n");
 						startpoint = new Point(CurrentX, CurrentY);
 						MovetoLocation(m.X, m.Y);
 						nomoremoves = false;
@@ -287,16 +297,10 @@ namespace FcAgent
 				}
 				if (nomoremoves)
 				{
-					Textb += "Can't make any more moves\n";
+					Console.WriteLine("Can't make any more moves\n");
 				}
 			}
-
-			if (corridor.map[CurrentX, CurrentY].Obstacle)
-			{
-				//tu powinno być odnotowywanie zderzenie z przeszkodą
-				throw new Exception("The agent hitted the obstacle");
-			}
-
+                       
 		}
 
 		private List<Point> Getpointneighbours(Point p)
