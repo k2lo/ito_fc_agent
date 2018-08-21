@@ -4,6 +4,9 @@ using System.Linq;
 using System.Drawing;
 using aima.core.logic.fol.kb;
 using aima.core.logic.fol.domain;
+using aima.core.logic.fol.inference;
+using aima.core.logic.fol.inference.proof;
+using aima.core.logic.fol.parsing.ast;
 
 enum Direction { East, South, North, West };
 namespace FcAgent
@@ -23,17 +26,19 @@ namespace FcAgent
 		private List<Point> traversedPoints = new List<Point>();
 		Stack<Point> availablepoints = new Stack<Point>();
 		int performance = 0;
-		public Agent(Corridor c)
+
+
+
+        public Agent(Corridor c)
 		{
 
 			corridor = c;
 			map = c.map;
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
-                                     
-			kb = new FOLKnowledgeBase(DomainFactory.projectDomain());
-
-		}
+            kb = FOLKnowledgeBaseFactory.CreateProjectKnowledgeBase(new FOLFCAsk());
+            //TODO tworzenie zapytania do bazy
+        }
 		public int Actions
 		{
 			get
@@ -167,26 +172,27 @@ namespace FcAgent
 
 		private string CreateSentence(bool obstacle, bool door, int x, int y)
 		{
-			//TODO
-			//return "Ahead is " + (y + 1) + " , (nopit([A1, " + y + "]); assert(ispit([A1," + y + "])))";
+            //TODO
+            return "Ahead(1,3,Door)";
+            //return "Ahead(" + x + ","  + y + ",Door";
             //
-			if (door)
-			{
-				Console.WriteLine("Ahead is Door");
-				return "Ahead(Door)";
-			}
-			if (obstacle)
-			{
-				Console.WriteLine("point ( " + x + "," + y + ") is obstacle");
-				return "Ahead(Obstacle)";
-			}
-			else
-			{
-				Console.WriteLine("Ahead is Clear ");
-				return "Ahead(Clear)";
-			}
-      
-		}
+            //if (door)
+            //{
+            //	Console.WriteLine("Ahead is Door");
+            //	return "Ahead(Door)";
+            //}
+            //if (obstacle)
+            //{
+            //	Console.WriteLine("point ( " + x + "," + y + ") is obstacle");
+            //	return "Ahead(Obstacle)";
+            //}
+            //else
+            //{
+            //	//Console.WriteLine("Ahead is Clear ");
+            //	return "Ahead(Clear)";
+            //}
+
+        }
 		//This function makes the agent take a step in the corridor
 		public void Step()
 		{
@@ -207,6 +213,7 @@ namespace FcAgent
 			{
 				throw new Exception("The agent found the door and won");
 			}
+
 			List<Point> clear = new List<Point>();
 			List<Point> notclear = new List<Point>();
 
@@ -219,6 +226,7 @@ namespace FcAgent
 			List<Point> neighbours = Getpointneighbours(point);
 				foreach (Point n in neighbours)
 				{   
+
 					bool obsn = map[n.X, n.Y].Obstacle;
 				    bool drn = map[n.X, n.Y].Door;
 				    kb.tell(CreateSentence(obsn, drn, CurrentX, CurrentY));
@@ -227,7 +235,7 @@ namespace FcAgent
 					{   
 					    //kb.tell()
 						//Console.WriteLine("point ( " + n.X + "," + n.Y + ") is obstacle");
-						//obstaclenodes.Add(n);
+						obstaclenodes.Add(n);
 					}
 					else
 					{

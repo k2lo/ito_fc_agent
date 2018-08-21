@@ -106,14 +106,17 @@ namespace aima.core.logic.fol.domain
 	    return domain;
 	}
 
-    public static FOLDomain projectDomain()
+    public static FOLDomain ProjectDomain()
     {
         FOLDomain domain = new FOLDomain();
         domain.addPredicate("Ahead");
+        domain.addPredicate("Current");
+        domain.addPredicate("Win");
+        domain.addPredicate("Clear");
+        domain.addPredicate("GoTo");
 
         domain.addConstant("Door");
         domain.addConstant("Obstacle");
-		domain.addConstant("Clear");
 
         return domain;
     }

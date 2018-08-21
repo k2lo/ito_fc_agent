@@ -9,3 +9,14 @@
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.dll
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.pdb
 /Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csprojResolveAssemblyReference.cache
+/Users/karol/Projects/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.deps.json
+/Users/karol/Projects/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.runtimeconfig.json
+/Users/karol/Projects/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.runtimeconfig.dev.json
+/Users/karol/Projects/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.dll
+/Users/karol/Projects/ito_fc_agent/bin/Debug/netcoreapp2.0/ito_fc_agent.pdb
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csproj.CoreCompileInputs.cache
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.AssemblyInfoInputs.cache
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.AssemblyInfo.cs
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.dll
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.pdb
+/Users/karol/Projects/ito_fc_agent/obj/Debug/netcoreapp2.0/ito_fc_agent.csprojAssemblyReference.cache

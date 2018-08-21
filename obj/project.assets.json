@@ -700,11 +700,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/ito_fc_agent.csproj",
+      "projectUniqueName": "/Users/karol/Projects/ito_fc_agent/ito_fc_agent.csproj",
       "projectName": "ito_fc_agent",
-      "projectPath": "/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/ito_fc_agent.csproj",
+      "projectPath": "/Users/karol/Projects/ito_fc_agent/ito_fc_agent.csproj",
       "packagesPath": "/Users/karol/.nuget/packages/",
-      "outputPath": "/Users/karol/Documents/priv/c#/ito_fc_agent/ito_fc_agent/obj",
+      "outputPath": "/Users/karol/Projects/ito_fc_agent/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -732,15 +732,15 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "System.CodeDom": {
+            "target": "Package",
+            "version": "4.5.0"
+          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
             "version": "2.0",
             "autoReferenced": true
-          },
-          "System.CodeDom": {
-            "target": "Package",
-            "version": "4.5.0"
           }
         },
         "imports": [

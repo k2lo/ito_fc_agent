@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Remove="Form1.cs" />
+    <Compile Remove="terms\Add.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="4.5.0" />

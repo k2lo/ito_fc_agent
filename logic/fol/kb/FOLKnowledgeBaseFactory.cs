@@ -163,5 +163,18 @@ namespace aima.core.logic.fol.kb
 	    }
 	    return kb;
 	}
+
+    public static FOLKnowledgeBase CreateProjectKnowledgeBase(
+    InferenceProcedure infp)
+    {
+        FOLKnowledgeBase kb = new FOLKnowledgeBase(DomainFactory.ProjectDomain(), infp);
+        
+            kb.tell("Ahead(x,y,Door) => Clear(x,y)");
+            kb.tell("Clear(x,y) => GoTo(x,y)");
+            kb.tell("Ahead(x,y,Obstacle) => ~Clear(x,y)");
+            kb.tell("Current(x,y,Door) => Win(x,y)");
+
+        return kb;
+    }
     }
 }
