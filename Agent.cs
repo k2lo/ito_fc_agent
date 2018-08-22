@@ -7,11 +7,13 @@ using aima.core.logic.fol.domain;
 using aima.core.logic.fol.inference;
 using aima.core.logic.fol.inference.proof;
 using aima.core.logic.fol.parsing.ast;
+using aima.core.logic.propositional.agent;
 
 enum Direction { East, South, North, West };
 namespace FcAgent
 {
-	public class Agent
+    
+	public class FcAgent
 	{
 		private string Textb = "";
 		private List<Point> visited = new List<Point>();
@@ -21,25 +23,29 @@ namespace FcAgent
 		private int CurrentX = 0;
 		private int CurrentY = 0;
 		private Random r = new Random();
-		private FOLKnowledgeBase kb;
+        private FOLKnowledgeBase kb = FOLKnowledgeBaseFactory.CreateProjectKnowledgeBase(new FOLFCAsk());
+        private KBAgent agent;
+
 		private Point startpoint = new Point(0, 0);
 		private List<Point> traversedPoints = new List<Point>();
 		Stack<Point> availablepoints = new Stack<Point>();
 		int performance = 0;
 
 
-
-        public Agent(Corridor c)
+        
+        public FcAgent(Corridor c)
 		{
-
 			corridor = c;
 			map = c.map;
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
-            kb = FOLKnowledgeBaseFactory.CreateProjectKnowledgeBase(new FOLFCAsk());
+            InferenceResult result = kb.ask("Win(x,y)");
+            List<Term> terms = new List<Term>();
             //TODO tworzenie zapytania do bazy
         }
-		public int Actions
+
+
+        public int Actions
 		{
 			get
 			{
