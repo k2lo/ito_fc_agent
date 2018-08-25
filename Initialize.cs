@@ -5,7 +5,7 @@ namespace FcAgent
     public class Initialize
     {
 		public Corridor corridor;
-		public Agent agent;
+		public FcAgent agent;
         bool agentdead = false;
         bool agentwon = false;
 		aima.core.logic.fol.kb.FOLKnowledgeBase kb = null;
@@ -16,8 +16,7 @@ namespace FcAgent
 			corridor = new Corridor(10, 15, 50);
 			corridor.InitializeRandomWorld();
 
-			agent = new Agent(corridor);
-
+			agent = new FcAgent(corridor);
 
 		}
 

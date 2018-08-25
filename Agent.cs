@@ -8,12 +8,17 @@ using aima.core.logic.fol.inference;
 using aima.core.logic.fol.inference.proof;
 using aima.core.logic.fol.parsing.ast;
 using aima.core.logic.propositional.agent;
+using aima.core.agent;
+using aima.core.environment.wumpusworld;
+using aima.core.logic.propositional.parsing.ast;
 
 enum Direction { East, South, North, West };
 namespace FcAgent
 {
     
-	public class FcAgent
+
+
+	public class FcAgent : KBAgent
 	{
 		private string Textb = "";
 		private List<Point> visited = new List<Point>();
@@ -24,7 +29,6 @@ namespace FcAgent
 		private int CurrentY = 0;
 		private Random r = new Random();
         private FOLKnowledgeBase kb = FOLKnowledgeBaseFactory.CreateProjectKnowledgeBase(new FOLFCAsk());
-        private KBAgent agent;
 
 		private Point startpoint = new Point(0, 0);
 		private List<Point> traversedPoints = new List<Point>();
@@ -33,14 +37,15 @@ namespace FcAgent
 
 
         
-        public FcAgent(Corridor c)
+		public FcAgent(Corridor c) : base(FOLKnowledgeBaseFactory.CreateProjectKnowledgeBase(new FOLFCAsk()))
 		{
 			corridor = c;
 			map = c.map;
 			map[0, 0].PutAgent(this);
 			visited.Add(new Point(0, 0));
-            InferenceResult result = kb.ask("Win(x,y)");
-            List<Term> terms = new List<Term>();
+			AgentPercept percept = new AgentPercept(true,true,false,true,false);
+			execute(percept);
+            InferenceResult resul = kb.ask("Clear(x,y)");
             //TODO tworzenie zapytania do bazy
         }
 
@@ -332,6 +337,24 @@ namespace FcAgent
 			return neighbours;
 		}
 
+		public override string makePerceptSentence(Percept percept, int t)
+		{
+			throw new NotImplementedException();
+		}
 
+		public override aima.core.logic.propositional.parsing.ast.Sentence makeActionQuery(int t)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override string makeActionSentence(aima.core.agent.Action action, int t)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override aima.core.agent.Action ask(FOLKnowledgeBase KB, aima.core.logic.propositional.parsing.ast.Sentence actionQuery)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

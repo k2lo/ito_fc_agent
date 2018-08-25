@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 using aima.core.agent;
 using aima.core.agent.impl;
+using aima.core.logic.fol.kb;
 using aima.core.logic.propositional.kb;
 using aima.core.logic.propositional.parsing.ast;
 
@@ -32,22 +37,23 @@ namespace aima.core.logic.propositional.agent
     public abstract class KBAgent : AbstractAgent
     {
 	// persistent: KB, a knowledge base
-	protected KnowledgeBase KB;
+	protected FOLKnowledgeBase KB;
 	// t, a counter, initially 0, indicating time
 	private int t = 0;
 
-	public KBAgent(KnowledgeBase KB)
+		public KBAgent(FOLKnowledgeBase KB)
 	{
 	    this.KB = KB;
 	}
 
 	// function KB-AGENT(percept) returns an action
-	public override Action execute(Percept percept)
+        
+	public override core.agent.Action execute(Percept p)
 	{
 	    // TELL(KB, MAKE-PERCEPT-SENTENCE(percept, t))
-	    KB.tell(makePerceptSentence(percept, t));
-	    // action &lt;- ASK(KB, MAKE-ACTION-QUERY(t))
-	    Action action = ask(KB, makeActionQuery(t));
+	    KB.tell(makePerceptSentence(p, t));
+		// action &lt;- ASK(KB, MAKE-ACTION-QUERY(t))
+		core.agent.Action action = ask(KB, makeActionQuery(t));
 
 	    // TELL(KB, MAKE-ACTION-SENTENCE(action, t))
 	    KB.tell(makeActionSentence(action, t));
@@ -69,7 +75,7 @@ namespace aima.core.logic.propositional.agent
 	 *         at the given time.
 	 */
 	// MAKE-PERCEPT-SENTENCE(percept, t)
-	public abstract Sentence makePerceptSentence(Percept percept, int t);
+	public abstract String makePerceptSentence(Percept percept, int t);
 
 	/**
 	 * MAKE-ACTION-QUERY constructs a sentence that asks what action should be
@@ -92,7 +98,7 @@ namespace aima.core.logic.propositional.agent
 	 * @return a sentence asserting that the chosen action was executed.
 	 */
 	// MAKE-ACTION-SENTENCE(action, t)
-	public abstract Sentence makeActionSentence(Action action, int t);
+	public abstract String makeActionSentence(core.agent.Action action, int t);
 
 	/**
 	 * A wrapper around the KB's ask() method which translates the action (in the form of
@@ -106,6 +112,6 @@ namespace aima.core.logic.propositional.agent
 	 * @return the Action to be performed in response to the given query.
 	 */
 	// ASK(KB, MAKE-ACTION-QUERY(t))
-	public abstract Action ask(KnowledgeBase KB, Sentence actionQuery);
+		public abstract core.agent.Action ask(FOLKnowledgeBase KB, Sentence actionQuery);
     }
 }

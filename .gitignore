@@ -14,3 +14,15 @@ bin/Debug/netcoreapp2\.0/ito_fc_agent\.runtimeconfig\.json
 obj/Debug/netcoreapp2\.0/ito_fc_agent\.dll
 
 obj/Debug/netcoreapp2\.0/ito_fc_agent\.pdb
+
+obj/Debug/netcoreapp2\.0/ito_fc_agent\.csprojResolveAssemblyReference\.cache
+
+obj/ito_fc_agent\.csproj\.nuget\.cache
+
+obj/ito_fc_agent\.csproj\.nuget\.g\.props
+
+obj/ito_fc_agent\.csproj\.nuget\.g\.targets
+
+obj/project\.assets\.json
+
+obj/Debug/netcoreapp2\.0/ito_fc_agent\.csproj\.CoreCompileInputs\.cache

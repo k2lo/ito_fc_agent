@@ -12,7 +12,7 @@ namespace FcAgent
         private bool obstacle;
         //facts
         private bool clear, door, visited;
-        Agent CurrentAgent = null;
+		FcAgent CurrentAgent = null;
 
         public bool Obstacle
         {
@@ -67,7 +67,7 @@ namespace FcAgent
         }
 
 
-		internal Agent CurrentAgent1 { get => CurrentAgent; set => CurrentAgent = value; }
+		internal FcAgent CurrentAgent1 { get => CurrentAgent; set => CurrentAgent = value; }
 
 		public MapSquare()
         {
@@ -99,7 +99,7 @@ namespace FcAgent
                 
             return s;
         }
-        public void PutAgent(Agent a) {
+		public void PutAgent(FcAgent a) {
             CurrentAgent = a;
             visited = true;
         }
